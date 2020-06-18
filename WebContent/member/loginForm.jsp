@@ -11,10 +11,7 @@
 		<h1>로그인 페이지</h1>		
 	</header>
 	<hr />
-	<nav>
-		<a href="/apple/member?cmd=loginForm">로그인</a>
-		<a href="/apple/member?cmd=joinForm">회원가입</a>
-	</nav>
+	<%@include file="../include/nav.jsp" %>
 	<section>
 	<form action="/apple/member?cmd=loginProc" method="post">
 	<table border="1">

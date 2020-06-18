@@ -3,30 +3,30 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>글쓰기 페이지</title>
+<title>게시글 목록 페이지</title>
 <link href="/apple/static/css/style.css" rel="stylesheet"> 
 </head>
 <body>
 	<header>
-		<h1>글쓰기 페이지</h1>		
+		<h1>게시글 목록 페이지</h1>		
 	</header>
 	<hr />
 	<%@include file="../include/nav.jsp" %>
 	<section>
-	<form action="/apple/post?cmd=saveProc" method="post">
-	<table border="1">
-		<tr>
-			<th>제목</th>
-			<td><input type="text" name="title" /></td>
-		</tr>
-		<tr>
-			<th>내용</th>
-			<td><textarea rows="3" cols="22" name="content"></textarea></td>
-		</tr>
-	</table>
-	<button>글쓰기완료</button>
-	</form>
-</section>
+		<table border="1">
+			<tr>
+				<th>번호</th>
+				<th>제목</th>
+				<th>날짜</th>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td><a href="/apple/post?cmd=detial&id=1">첫번째글입니다.</a></td>
+				<td>2020-06-18</td>
+			</tr>
+		</table>
+		<a href="/apple/post?cmd=saveForm">글쓰기</a>
+	</section>
 	<footer>
 		<p>Created By Apple.</p>
 		<p>부산 진구 중앙대로 708</p>
