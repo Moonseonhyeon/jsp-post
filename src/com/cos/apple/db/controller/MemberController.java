@@ -13,6 +13,9 @@ import com.cos.apple.db.action.member.MemberJoinFormAction;
 import com.cos.apple.db.action.member.MemberJoinProcAction;
 import com.cos.apple.db.action.member.MemberLoginFormAction;
 import com.cos.apple.db.action.member.MemberLoginProcAction;
+import com.cos.apple.db.action.member.MemberLogoutAction;
+import com.cos.apple.db.action.member.MemberUpdateFormAction;
+import com.cos.apple.db.action.member.MemberUpdateProcAction;
 import com.cos.apple.db.action.post.PostListAction;
 
 //http://localhost:8000/apple/member
@@ -55,6 +58,12 @@ public class MemberController extends HttpServlet {
 			return new MemberLoginFormAction();
 		} else if (cmd.equals("loginProc")) {
 			return new MemberLoginProcAction();
+		} else if (cmd.equals("updateForm")) {
+			return new MemberUpdateFormAction();
+		} else if (cmd.equals("updateProc")) {
+			return new MemberUpdateProcAction();
+		} else if (cmd.equals("logoutForm")) {
+			return new MemberLogoutAction();
 		} 
 		return null;
 	}
