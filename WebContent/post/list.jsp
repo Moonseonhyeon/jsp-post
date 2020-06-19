@@ -22,7 +22,7 @@
 			<c:forEach var="post" items="${posts}">
 			<tr>
 				<td>${post.id}</td>
-				<td><a href="/apple/post?cmd=detial&id=${post.id}">${post.title}</a></td>
+				<td><a href="/apple/post?cmd=detail&id=${post.id}">${post.title}</a></td>
 				<td>${post.createDate}</td>
 			</tr>
 			</c:forEach>

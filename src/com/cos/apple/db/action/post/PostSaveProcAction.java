@@ -30,8 +30,6 @@ public class PostSaveProcAction implements Action{
 		PostDao postDao = new PostDao();
 		int result = postDao.글쓰기(memberId, title, content);
 		
-		System.out.println("PostSaveProcAction result : "+result);
-		
 		if(result == 1) {
 			response.sendRedirect("index.jsp");
 		}else {

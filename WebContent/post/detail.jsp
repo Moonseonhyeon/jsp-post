@@ -24,10 +24,10 @@
 		</tr>
 
 		<tr>
-			<td>1</td>
-			<td>ssar</td>
-			<td>첫번째글입니다.</td>
-			<td>내용입니다.</td>
+			<td>${detailDto.id}</td>
+			<td>${detailDto.memberId}</td>
+			<td>${detailDto.title}</td>
+			<td>${detailDto.content}</td>
 			<td><a href="/apple/post?cmd=updateForm&id=1">수정</a></td>
 			<td><a href="/apple/post?cmd=deleteProc&id=1">삭제</a></td>
 		</tr>

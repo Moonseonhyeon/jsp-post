@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.cos.apple.db.action.Action;
+import com.cos.apple.db.action.post.PostDetailAction;
 import com.cos.apple.db.action.post.PostListAction;
 import com.cos.apple.db.action.post.PostSaveFormAction;
 import com.cos.apple.db.action.post.PostSaveProcAction;
@@ -52,6 +53,8 @@ public class PostController extends HttpServlet {
 			return new PostSaveFormAction();
 		}else if (cmd.equals("saveProc")) {
 			return new PostSaveProcAction();
+		}else if (cmd.equals("detail")) {
+			return new PostDetailAction();
 		}
 		return null;
 	}

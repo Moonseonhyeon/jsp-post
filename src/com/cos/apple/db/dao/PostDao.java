@@ -9,6 +9,7 @@ import java.util.List;
 import javax.servlet.jsp.jstl.sql.Result;
 
 import com.cos.apple.db.DBConn;
+import com.cos.apple.db.dto.DetailDto;
 import com.cos.apple.db.model.Member;
 import com.cos.apple.db.model.Post;
 
@@ -16,6 +17,39 @@ public class PostDao {
 	private Connection conn;
 	private PreparedStatement pstmt;
 	private ResultSet rs;
+	
+	public DetailDto 상세글보기(int id) {
+		try {
+			
+			String sql = "SELECT ";
+			StringBuilder sb = new StringBuilder();
+			sb.append("select m.id, p.memberId, p.title, p.content, p.createDate ");
+			sb.append("from post p INNER JOIN member m ");
+			sb.append("On p.memberId = m.id ");
+			sb.append("WHERE p.id=? ");
+			final String SQL = sb.toString();
+			
+			
+			conn = DBConn.getConnection();
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, id);
+			
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				DetailDto detailDto = new DetailDto();
+				detailDto.setId(rs.getInt(1));
+				detailDto.setMemberId(rs.getInt(2));
+				detailDto.setTitle(rs.getString(3));
+				detailDto.setContent(rs.getString(4));
+				detailDto.setCreateDate(rs.getTimestamp(5));
+			
+			return detailDto;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 
 	public List<Post> 글목록() {
 		try {
