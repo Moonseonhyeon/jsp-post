@@ -28,8 +28,8 @@
 			<td>${detailDto.memberId}</td>
 			<td>${detailDto.title}</td>
 			<td>${detailDto.content}</td>
-			<td><a href="/apple/post?cmd=updateForm&id=1">수정</a></td>
-			<td><a href="/apple/post?cmd=deleteProc&id=1">삭제</a></td>
+			<td><a href="/apple/post?cmd=updateForm&id=${detailDto.id}">수정</a></td>
+			<td><a href="/apple/post?cmd=deleteProc&id=${detailDto.id}">삭제</a></td>
 		</tr>
 	</table>
 </section>

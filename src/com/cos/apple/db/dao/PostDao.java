@@ -18,12 +18,59 @@ public class PostDao {
 	private PreparedStatement pstmt;
 	private ResultSet rs;
 	
+	public int 글수정(DetailDto detailDto) {
+		final String SQL = "UPDATE post SET title = ?, content = ? WHERE id = ?";// 쿼리문
+		try {
+			conn = DBConn.getConnection();
+			pstmt = conn.prepareStatement(SQL);
+			// 물음표 완성
+			pstmt.setString(1, detailDto.getTitle());
+			pstmt.setString(2, detailDto.getContent());
+			pstmt.setInt(3, detailDto.getId());
+			return pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("글수정 : " + e.getMessage());
+		} 
+
+		return -1;
+	}
+	
+	public DetailDto 수정(int id) {
+		try {
+			StringBuilder sb = new StringBuilder();
+			sb.append("select p.id, p.memberId, p.title, p.content, p.createDate ");
+			sb.append("from post p INNER JOIN member m ");
+			sb.append("On p.memberId = m.id ");
+			sb.append("WHERE p.id=? ");
+			final String SQL = sb.toString();
+			
+			
+			conn = DBConn.getConnection();
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, id);
+			
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				DetailDto detailDto = new DetailDto();
+				detailDto.setId(rs.getInt(1));
+				detailDto.setMemberId(rs.getInt(2));
+				detailDto.setTitle(rs.getString(3));
+				detailDto.setContent(rs.getString(4));
+				detailDto.setCreateDate(rs.getTimestamp(5));
+			
+			return detailDto;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 	public DetailDto 상세글보기(int id) {
 		try {
-			
-			String sql = "SELECT ";
 			StringBuilder sb = new StringBuilder();
-			sb.append("select m.id, p.memberId, p.title, p.content, p.createDate ");
+			sb.append("select p.id, p.memberId, p.title, p.content, p.createDate ");
 			sb.append("from post p INNER JOIN member m ");
 			sb.append("On p.memberId = m.id ");
 			sb.append("WHERE p.id=? ");

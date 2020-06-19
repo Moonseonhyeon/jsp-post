@@ -12,27 +12,29 @@ import com.cos.apple.db.action.Action;
 import com.cos.apple.db.dao.PostDao;
 import com.cos.apple.db.dto.DetailDto;
 
-public class PostDetailAction implements Action{
+public class PostUpdateFormAction implements Action{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		HttpSession session = request.getSession();
-//		if(session.getAttribute("principal")==null) {
-//			response.sendRedirect("member/loginForm.jsp");
-//			return;
-//		}
-		//System.out.println(request.getParameter("id"));
+		if(session.getAttribute("principal")==null) {
+			response.sendRedirect("member/loginForm.jsp");
+			return;
+		}
 		
 		int id = Integer.parseInt(request.getParameter("id"));
-		PostDao postDao = new PostDao();
-		DetailDto detailDto = postDao.상세글보기(id);
+		System.out.println("PostUpdateFormAction id : "+ id);
 		
-		//int result = postDao.상세글보기(id, memberId, title, content);
+		
+		PostDao postDao = new PostDao();
+		DetailDto detailDto = postDao.수정(id);
 		
 		request.setAttribute("detailDto", detailDto);
-		RequestDispatcher dis = request.getRequestDispatcher("post/detail.jsp");
+		RequestDispatcher dis = request.getRequestDispatcher("post/updateForm.jsp");
 		dis.forward(request, response);
-		//response.sendRedirect("post/detail.jsp");
+		
+		//response.sendRedirect("post/updateForm.jsp");
 	}
 
 }

@@ -13,18 +13,19 @@
 	<hr />
 	<%@include file="../include/nav.jsp" %>
 	<section>
-	<form action="/apple/post?cmd=saveProc" method="post">
+	<form action="/apple/post?cmd=updateProc" method="post">
+	<input type="hidden" value="${detailDto.id}" name="id" />
 	<table border="1">
 		<tr>
 			<th>제목</th>
-			<td><input value="제목입니다. 넣기" type="text" name="title" /></td>
+			<td><input value="${detailDto.title}" type="text" name="title" /></td>
 		</tr>
 		<tr>
 			<th>내용</th>
-			<td><textarea rows="3" cols="22" name="content">내용입니다. 넣기</textarea></td>
+			<td><textarea rows="3" cols="22" name="content">${detailDto.content}</textarea></td>
 		</tr>
 	</table>
-	<button>글수정완료</button>
+	<button>글수정 완료</button>
 	</form>
 </section>
 	<footer>
