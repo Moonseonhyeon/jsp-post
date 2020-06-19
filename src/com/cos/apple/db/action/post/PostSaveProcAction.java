@@ -25,8 +25,12 @@ public class PostSaveProcAction implements Action{
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
 		
+		//System.out.println("PostSaveProcAction title"+title);
+		
 		PostDao postDao = new PostDao();
 		int result = postDao.글쓰기(memberId, title, content);
+		
+		System.out.println("PostSaveProcAction result : "+result);
 		
 		if(result == 1) {
 			response.sendRedirect("index.jsp");

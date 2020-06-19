@@ -7,8 +7,8 @@ import lombok.Data;
 @Data
 public class Post {
 	private int id;
-	private int memberid;
-	private String titile;
+	private int memberId;
+	private String title;
 	private String content;
-	private Timestamp creatDate;
+	private Timestamp createDate;
 }
