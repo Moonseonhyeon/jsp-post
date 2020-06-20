@@ -28,8 +28,10 @@
 			<td>${detailDto.memberId}</td>
 			<td>${detailDto.title}</td>
 			<td>${detailDto.content}</td>
+			<c:if test="${sessionScope.principal.id == detailDto.memberId}">
 			<td><a href="/apple/post?cmd=updateForm&id=${detailDto.id}">수정</a></td>
 			<td><a href="/apple/post?cmd=deleteProc&id=${detailDto.id}">삭제</a></td>
+			</c:if>
 		</tr>
 	</table>
 </section>
