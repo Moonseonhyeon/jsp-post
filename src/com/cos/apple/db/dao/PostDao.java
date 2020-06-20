@@ -18,6 +18,21 @@ public class PostDao {
 	private PreparedStatement pstmt;
 	private ResultSet rs;
 	
+	public int 삭제(int id) {
+		try {
+			final String SQL = "DELETE FROM post WHERE id = ?";
+						
+			conn = DBConn.getConnection();
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, id);
+			
+			return pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return -1;
+	}
+	
 	public int 글수정(DetailDto detailDto) {
 		final String SQL = "UPDATE post SET title = ?, content = ? WHERE id = ?";// 쿼리문
 		try {
